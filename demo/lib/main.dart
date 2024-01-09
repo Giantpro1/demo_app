@@ -12,8 +12,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text('Welcome Arike Preorder'),
         ),
+        bottomNavigationBar: BottomAppBar(
+            color: Colors.amberAccent,
+            child: IconButton(
+                onPressed: () {
+                  // print("Button Pressed");
+                },
+                icon: const Icon(Icons.home, color: Colors.white,))),
       ),
     );
   }
