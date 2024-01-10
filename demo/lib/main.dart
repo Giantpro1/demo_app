@@ -13,6 +13,11 @@ class _MyAppState extends State<MyApp> {
   // const MyApp({super.key});
   bool myNewButton = false;
   String myNewText = "Hello";
+  int nums = 0;
+  final ButtonStyle style = ElevatedButton.styleFrom(
+    backgroundColor:
+        const Color.fromARGB(255, 236, 191, 57), // Choose your preferred color
+  );
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,21 +27,34 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Welcome Arike Preorder'),
         ),
         body: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
-          // mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: nums == 0
+              ? MainAxisAlignment.start
+              : nums == 1
+                  ? MainAxisAlignment.center
+                  : MainAxisAlignment.end,
           children: [
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    myNewButton = !myNewButton;
-                  });
-                },
-                child: const Text("My Button")),
             Container(
               height: 30,
               child: Row(
+                mainAxisAlignment: nums == 0
+                    ? MainAxisAlignment.start
+                    : nums == 1
+                        ? MainAxisAlignment.center
+                        : MainAxisAlignment.end,
                 children: [
-                  Text(myNewButton ? "This Is true" : myNewText),
+                  ElevatedButton(
+                      style: style,
+                      onPressed: () {
+                        setState(() {
+                          // myNewButton = !myNewButton;
+                          nums == 2 ? nums = 0 : nums = nums + 1;
+                        });
+                      },
+                      child: const Text(
+                        "My Button",
+                        style: TextStyle(color: Colors.white),
+                      )),
+                  // Text(myNewButton ? "This Is true" : myNewText),
                   // Text("My Student"),
                   // Text("My Student"),
                 ],
